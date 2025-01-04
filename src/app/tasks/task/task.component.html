@@ -1,0 +1,22 @@
+<mat-card class="single-task-card">
+    <mat-card-content>
+        <div class="task-row">
+
+            <div class="checkbox-section">
+                <mat-checkbox [(ngModel)]="task.completed" (change)="onCompletedTask()"></mat-checkbox>
+            </div>
+
+            <div class="text-section">
+                <span class="task-name" [ngClass]="{'completed-task': task.completed}">
+                    {{ task.taskName }}
+                </span>
+            </div>
+
+            <div class="button-section">
+                <button mat-mini-fab color="delete" (click)="onDeleteTask()">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,47 @@
+.single-task-card {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+    max-width: 50rem;
+    margin: 0 auto 2rem auto;
+    text-align: left;
+    padding: 1rem;
+    border-radius: 12px;
+    background: linear-gradient(to bottom, #cfcdef, #fcfcfc);
+  }
+
+.task-row {
+    display: flex;
+    align-items: center; /* Align items at the top */
+    gap: 8px; /* Space between sections */
+}
+
+.checkbox-section {
+    flex-shrink: 0; /* Prevents shrinking */
+}
+
+.text-section {
+    flex-grow: 1; /* Allows text to take available space */
+    word-break: break-word; /* Ensures long words wrap */
+    overflow-wrap: break-word; /* Alternative for compatibility */
+}
+
+.task-name {
+    display: block; /* Allows it to behave like a block element for wrapping */
+    max-width: 100%; /* Prevents overflow */
+}
+
+.button-section {
+    flex-shrink: 0; /* Prevents shrinking */
+}
+
+.mat-delete {
+    background-color: rgb(250, 115, 115);
+}
+
+.completed-task {
+    text-decoration: line-through;
+    color: gray;
+}
