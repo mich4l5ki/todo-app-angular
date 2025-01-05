@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TasksService } from '../tasks.service';
 
-
 @Component({
   selector: 'app-task',
   imports: [

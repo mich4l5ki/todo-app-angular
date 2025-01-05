@@ -3,7 +3,7 @@
         <div class="task-row">
 
             <div class="checkbox-section">
-                <mat-checkbox [(ngModel)]="task.completed" (change)="onCompletedTask()"></mat-checkbox>
+                <mat-checkbox color="primary" [(ngModel)]="task.completed" (change)="onCompletedTask()"></mat-checkbox>
             </div>
 
             <div class="text-section">
@@ -17,6 +17,7 @@
                     <mat-icon>delete</mat-icon>
                 </button>
             </div>
+
         </div>
     </mat-card-content>
 </mat-card>

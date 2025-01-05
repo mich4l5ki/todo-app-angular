@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Task } from './task/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,15 @@ export class TasksService {
     }
   }
 
-  private tasks = [
+  private tasks: Task[] = [
     {
       id: 't1',
-      taskName: 'master angular',
+      taskName: 'Example task',
       completed: false
     },
     {
       id: 't2',
-      taskName: 'vacuum',
+      taskName: 'Example completed task',
       completed: true
     }
   ];
@@ -30,7 +31,7 @@ export class TasksService {
 
   addTask(taskInput: string) {
     this.tasks.push({
-      id: new Date().getTime.toString(),
+      id: new Date().getTime().toString(),
       taskName: taskInput,
       completed: false
     });
@@ -49,8 +50,7 @@ export class TasksService {
   changeCompletedStatus(id: string, completed: boolean) {
     const task = this.tasks.find((task) => task.id === id);
     if (task) {
-      task.completed = completed;  // Toggle the 'completed' value
-      console.log(`Task with id ${id} is now ${task.completed ? 'completed' : 'not completed'}`);
+      task.completed = completed;
     }
     this.saveTasks();
   }
