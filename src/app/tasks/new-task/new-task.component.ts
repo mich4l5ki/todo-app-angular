@@ -19,16 +19,15 @@ export class NewTaskComponent implements AfterViewInit {
     this.taskInput.nativeElement.focus();
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted = true;
     if (this.enteredTask) {
       this.taskService.addTask(this.enteredTask);
       this.close.emit();
     }
-
   }
 
-  onCancel() {
+  onCancel(): void {
     this.close.emit();
   }
 }

@@ -5,6 +5,9 @@ import { TasksService } from './tasks.service';
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from "./new-task/new-task.component";
 import { NgClass } from '@angular/common';
+import { Task } from './task/task.model';
+import { Observable, Subscription } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-tasks',
@@ -13,25 +16,27 @@ import { NgClass } from '@angular/common';
     MatButtonModule,
     TaskComponent,
     NewTaskComponent,
-    NgClass
+    NgClass,
+    AsyncPipe
   ],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss'
 })
 export class TasksComponent {
   isAddingTask = false;
-
+  public tasks$!: Observable<Task[]>;
   constructor(private tasksService: TasksService) {}
+  private tasks_subscription!: Subscription;
 
-  get tasks() {
-    return this.tasksService.getTasks();
+  ngOnInit(): void {
+      this.tasks$ = this.tasksService.tasks$;
   }
 
-  onStartAddTask() {
+  onStartAddTask(): void {
     this.isAddingTask = true;
   }
 
-  onCloseAddTask() {
+  onCloseAddTask(): void {
     this.isAddingTask = false;
   }
 }

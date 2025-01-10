@@ -8,7 +8,7 @@
     </mat-card-header>
 
     <mat-card-content>
-        @for (task of tasks; track task.id) {
+        @for (task of (tasks$ | async); track task.id) {
             <app-task [task]="task"/>
         }
     </mat-card-content>

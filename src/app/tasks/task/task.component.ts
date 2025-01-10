@@ -25,13 +25,13 @@ export class TaskComponent {
   @Input({ required: true}) task!: Task;
   constructor(private tasksService: TasksService) {}
 
-  onDeleteTask() {
+  onDeleteTask(): void {
     if (confirm('Are you sure you want to delete this task?')) {
-      return this.tasksService.removeTask(this.task.id);
+      this.tasksService.removeTask(this.task.id);
     }
   }
 
-  onCompletedTask() {
-    return this.tasksService.changeCompletedStatus(this.task.id, this.task.completed);
+  onCompletedTask(): void {
+    this.tasksService.changeCompletedStatus(this.task.id, this.task.completed);
   }
 }
