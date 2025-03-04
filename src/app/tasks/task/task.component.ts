@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Task } from './task.model';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TasksService } from '../tasks.service';
+import { DialogComponent } from '../../shared/dialog/dialog.component'
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-task',
@@ -23,12 +25,25 @@ import { TasksService } from '../tasks.service';
 })
 export class TaskComponent {
   @Input({ required: true}) task!: Task;
+  readonly TaskEditDialog = inject(MatDialog)
   constructor(private tasksService: TasksService) {}
 
   onDeleteTask(): void {
     if (confirm('Are you sure you want to delete this task?')) {
       this.tasksService.removeTask(this.task.id);
     }
+  }
+
+  onArchiveTask(): void {
+    if (confirm('Are you sure you want to archive this task?')) {
+      this.tasksService.archiveTask(this.task.id);
+    }
+  }
+
+  onEditTaskDialog(): void {
+    const dialogRef = this.TaskEditDialog.open(DialogComponent, {
+      data: this.task
+    });
   }
 
   onCompletedTask(): void {

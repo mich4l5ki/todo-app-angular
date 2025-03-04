@@ -9,7 +9,9 @@
 
     <mat-card-content>
         @for (task of (tasks$ | async); track task.id) {
-            <app-task [task]="task"/>
+            @if (!task.archived) {
+                <app-task [task]="task"/>
+            }
         }
     </mat-card-content>
 

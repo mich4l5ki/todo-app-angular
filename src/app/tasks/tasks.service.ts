@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Task } from './task/task.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +20,14 @@ export class TasksService {
     {
       id: 't1',
       taskName: 'Example task',
-      completed: false
+      completed: false,
+      archived: false
     },
     {
       id: 't2',
       taskName: 'Example completed task',
-      completed: true
+      completed: true,
+      archived: false
     }
   ])
   tasks$ = this.tasksSubject.asObservable();
@@ -34,7 +36,8 @@ export class TasksService {
     this.tasksSubject.next([...this.tasksSubject.getValue(), {
       id: new Date().getTime().toString(),
       taskName: taskInput,
-      completed: false
+      completed: false,
+      archived: false
     }]);
     this.saveTasks()
   }
@@ -49,10 +52,26 @@ export class TasksService {
     this.saveTasks();
   }
 
+  archiveTask(id: string): void {
+    const updatedTask = this.tasksSubject.getValue().find((task) => task.id === id);
+    if (updatedTask) {
+      updatedTask.archived = true;
+    }
+    this.saveTasks();
+  }
+
   changeCompletedStatus(id: string, completed: boolean): void {
     const updatedTask = this.tasksSubject.getValue().find((task) => task.id === id);
     if (updatedTask) {
       updatedTask.completed = completed;
+    }
+    this.saveTasks();
+  }
+
+  editTask(id: string, taskName: string): void {
+    const updatedTask = this.tasksSubject.getValue().find((task) => task.id === id);
+    if (updatedTask) {
+      updatedTask.taskName = taskName;
     }
     this.saveTasks();
   }

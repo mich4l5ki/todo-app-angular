@@ -6,7 +6,7 @@ import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from "./new-task/new-task.component";
 import { NgClass } from '@angular/common';
 import { Task } from './task/task.model';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -26,7 +26,6 @@ export class TasksComponent {
   isAddingTask = false;
   public tasks$!: Observable<Task[]>;
   constructor(private tasksService: TasksService) {}
-  private tasks_subscription!: Subscription;
 
   ngOnInit(): void {
       this.tasks$ = this.tasksService.tasks$;
