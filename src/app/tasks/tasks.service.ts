@@ -18,13 +18,13 @@ export class TasksService {
   }
   private tasksSubject = new BehaviorSubject<Task[]>([
     {
-      id: 't1',
+      id: '1',
       taskName: 'Example task',
       completed: false,
       archived: false
     },
     {
-      id: 't2',
+      id: '2',
       taskName: 'Example completed task',
       completed: true,
       archived: false
@@ -56,6 +56,15 @@ export class TasksService {
     const updatedTask = this.tasksSubject.getValue().find((task) => task.id === id);
     if (updatedTask) {
       updatedTask.archived = true;
+    }
+    this.saveTasks();
+  }
+
+  restoreTask(id: string): void {
+    const updatedTask = this.tasksSubject.getValue().find((task) => task.id === id);
+    if (updatedTask) {
+      updatedTask.archived = false;
+      updatedTask.completed = false;
     }
     this.saveTasks();
   }

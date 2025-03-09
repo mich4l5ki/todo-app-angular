@@ -8,6 +8,7 @@ import { NgClass } from '@angular/common';
 import { Task } from './task/task.model';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
@@ -17,7 +18,8 @@ import { AsyncPipe } from '@angular/common';
     TaskComponent,
     NewTaskComponent,
     NgClass,
-    AsyncPipe
+    AsyncPipe,
+    RouterLink
   ],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss'

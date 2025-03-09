@@ -28,12 +28,6 @@ export class TaskComponent {
   readonly TaskEditDialog = inject(MatDialog)
   constructor(private tasksService: TasksService) {}
 
-  onDeleteTask(): void {
-    if (confirm('Are you sure you want to delete this task?')) {
-      this.tasksService.removeTask(this.task.id);
-    }
-  }
-
   onArchiveTask(): void {
     if (confirm('Are you sure you want to archive this task?')) {
       this.tasksService.archiveTask(this.task.id);
