@@ -8,11 +8,13 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { TasksService } from '../../tasks/tasks.service';
+import { noSpecialCharactersValidator } from '../../validators/validators.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-dialog',
@@ -27,19 +29,30 @@ import { TasksService } from '../../tasks/tasks.service';
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
+    ReactiveFormsModule,
+    NgIf
   ],
 })
 export class DialogComponent {
   readonly dialogRef = inject(MatDialogRef<DialogComponent>);
   readonly data = inject<Task>(MAT_DIALOG_DATA);
+  editTaskForm: FormGroup;
 
-  constructor(private tasksService: TasksService) {};
+  constructor(private tasksService: TasksService, private fb: FormBuilder) {
+      this.editTaskForm = this.fb.group({
+        taskName: [this.data.taskName, [Validators.required, noSpecialCharactersValidator()]]
+      });
+    }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   onOk(): void {
-    this.tasksService.editTask(this.data.id, this.data.taskName);
+    if (this.editTaskForm.valid) {
+      const updatedTaskName = this.editTaskForm.value.taskName;
+      this.tasksService.editTask(this.data.id, updatedTaskName);
+      this.dialogRef.close();
+    }
   }
 }

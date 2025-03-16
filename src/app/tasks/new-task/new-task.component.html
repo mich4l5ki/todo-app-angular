@@ -1,18 +1,27 @@
 <div class="backdrop" (click)="onCancel()"></div>
 <dialog open>
     <h2>Add New Task</h2>
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" [formGroup]="newTaskForm">
       <p>
         <input
             type="text"
             id="title"
             name="title"
-            [(ngModel)]="enteredTask"
+            formControlName="enteredTask"
             #taskInput
-            [class.error]="!enteredTask && submitted"
+            [class.error]="newTaskForm.get('enteredTask')?.invalid && newTaskForm.get('enteredTask')?.touched"
             [placeholder]="!enteredTask && submitted ? 'Task cannot be empty' : 'Enter a task'"
         />
       </p>
+
+      <div *ngIf="newTaskForm.get('enteredTask')?.invalid &&
+        newTaskForm.get('enteredTask')?.value?.trim()">
+
+        <div *ngIf="newTaskForm.get('enteredTask')?.errors?.['noSpecialCharacters']" style=" color: red; ">
+          Any special characters are forbidden.
+        </div>
+
+      </div>
 
       <p class="actions">
         <button type="button" (click)="onCancel()">Cancel</button>
