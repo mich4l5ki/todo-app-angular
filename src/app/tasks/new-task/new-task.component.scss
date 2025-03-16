@@ -82,5 +82,14 @@ input.error::placeholder {
 @media (min-width: 768px) {
     dialog {
       padding: 2rem;
+      min-width: 400px;
+    }
+}
+@media (max-width: 400px) {
+    dialog {
+      padding: 2rem;
+      width: 350px;
+      margin-left: 20px;
+      margin-right: 20px;
     }
 }

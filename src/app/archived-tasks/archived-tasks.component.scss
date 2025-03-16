@@ -5,11 +5,19 @@
     gap: 1rem;
     width: 90%;
     max-width: 50rem;
+    max-height: 10%;
     margin: 0 auto 2rem auto;
     text-align: center;
     padding: 1rem;
     border-radius: 12px;
-  }
+    max-height: 70vh;
+}
+
+.table-container {
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+}
 
 mat-card-content {
     width: 80%;
@@ -43,4 +51,13 @@ mat-card-content {
 
 .mat-column-name {
     height: 100px;
+}
+
+@media (max-width: 400px) {
+    .button-section {
+        button {
+            width: 30px;  // Smaller size for smaller screens
+            height: 30px;
+        }
+    }
 }

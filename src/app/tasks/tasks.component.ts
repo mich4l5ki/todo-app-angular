@@ -19,7 +19,6 @@ import { RouterLink } from '@angular/router';
     NewTaskComponent,
     NgClass,
     AsyncPipe,
-    RouterLink
   ],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss'

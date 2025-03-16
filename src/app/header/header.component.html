@@ -1,6 +1,25 @@
-<div>
-    <img src="logo.png" alt="logo">
-    <div>
+    <div class="div-logo">
+      <img src="logo.png" alt="logo">
+    </div>
+    <div class="div-app-title" >
         <h1>TODO APP</h1>
     </div>
-</div>
+    <div class="div-menu">
+        <button class="menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button routerLink="/active-tasks" mat-menu-item>
+              <mat-icon>done</mat-icon>
+              <span>Active Tasks</span>
+            </button>
+            <button routerLink="/archived-tasks" mat-menu-item>
+                <mat-icon>archived</mat-icon>
+                <span>Archived Tasks</span>
+            </button>
+            <button routerLink="/pesel-decoder" mat-menu-item>
+              <mat-icon>swap_horiz</mat-icon>
+              <span>Pesel Converter</span>
+          </button>
+          </mat-menu>
+    </div>

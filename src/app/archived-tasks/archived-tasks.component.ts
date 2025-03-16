@@ -17,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
     MatCardModule,
     MatTableModule,
     MatIconModule,
-    RouterLink,
     MatFormField,
     MatLabel,
     MatInputModule

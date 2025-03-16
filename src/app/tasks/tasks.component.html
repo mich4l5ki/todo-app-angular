@@ -15,9 +15,6 @@
         }
     </mat-card-content>
 
-    <mat-card-actions style="display: flex; gap: 10px;">
-        <button mat-raised-button color="primary" (click)="onStartAddTask()">Add new task</button>
-        <button mat-raised-button color="" routerLink="/archived-tasks">Archived Tasks</button>
-    </mat-card-actions>
+    <button class="button-add-task" mat-raised-button color="primary" (click)="onStartAddTask()">Add new task</button>
 
 </mat-card>

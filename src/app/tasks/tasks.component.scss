@@ -9,12 +9,19 @@
   text-align: center;
   padding: 1rem;
   border-radius: 12px;
+  max-height: 70vh;
 }
 mat-card-content {
     width: 80%;
+    flex-grow: 1;
+    overflow-y: auto;
   }
 
 .card-back {
     position: relative;
     z-index: -1;
   }
+
+.button-add-task {
+  flex-shrink: 0;
+}
