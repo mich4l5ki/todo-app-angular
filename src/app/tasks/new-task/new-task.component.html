@@ -17,7 +17,7 @@
       <div *ngIf="newTaskForm.get('enteredTask')?.invalid &&
         newTaskForm.get('enteredTask')?.value?.trim()">
 
-        <div *ngIf="newTaskForm.get('enteredTask')?.errors?.['noSpecialCharacters']" style=" color: red; ">
+        <div *ngIf="newTaskForm.get('enteredTask')?.errors?.['specialCharacters']" style=" color: red; ">
           Any special characters are forbidden.
         </div>
 

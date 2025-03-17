@@ -1,0 +1,29 @@
+.pesel-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+    width: 90%;
+    max-width: 50rem;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 12px;
+    max-height: 70vh;
+}
+
+mat-card-content {
+    width: 80%;
+    overflow-y: auto;
+}
+
+.decoder-card-header {
+    justify-content: center;
+    text-align: center;
+}
+
+.decoder-card-actions {
+    justify-content: center;
+    text-align: center;
+}
